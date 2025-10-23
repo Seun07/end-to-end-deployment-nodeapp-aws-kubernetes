@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#another method of installing jenkins
 
 sudo apt update -y
 
