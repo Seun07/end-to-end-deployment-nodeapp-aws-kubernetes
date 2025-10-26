@@ -19,13 +19,17 @@ jenkins --version
 # install git
 sudo apt install git -y
 
-# install terraform
+# install Terraform on Ubuntu 22.04|20.04 |18.04
 
-sudo apt install -y apt-utils
-sudo apt-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
-sudo apt -y install terraform
+sudo apt-get update
+sudo apt install  software-properties-common gnupg2 curl
+#hwe-support-status --verbose
+curl https://apt.releases.hashicorp.com/gpg | gpg --dearmor > hashicorp.gpg
+sudo install -o root -g root -m 644 hashicorp.gpg /etc/apt/trusted.gpg.d/
 
-terraform --version
+sudo apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+
+sudo apt install terraform -y
 
 # install docker
 
